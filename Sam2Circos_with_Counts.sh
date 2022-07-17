@@ -10,7 +10,8 @@
 # will then be printed out on a per line basis.
 # Requires a custom karyotype file to be used with Circos.
 # Some data lines will be messed up and manual curation is required.
-# use: bash Sam2Circos.sh
+# note: this may have been fixed with added FS in awk
+# use: bash Sam2Circos_with_Count.sh
 # written July 10, 2022 by S. Dean Rider Jr. based on the following:
 # https://www.unix.com/unix-for-dummies-questions-and-answers/179555-count-different-characters-one-column.html
 # answer by scrutinizer
