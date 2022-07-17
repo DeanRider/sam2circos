@@ -1,4 +1,4 @@
-#sam2circos
+# sam2circos
 Each of these scripts will scan a folder to create a list of input sam files 
 It will then use each file in the list it created
 and evaluate field 2 to separate primary mappings.
@@ -10,11 +10,11 @@ and the count will then be printed out on a per line basis.
 
 Requires a custom karyotype file to be used with Circos.
 
-Names of References must match those in the karyotype file.
+Names of References must match those in the karyotype file, therefore,
+Manual correction is recommended after processing of the sam file.
 
-Some data lines will be messed up and manual curation is required.
-
-use: bash Sam2Circos_with_Counts.sh or sam3circos_with_lengths.sh
+use: bash Sam2Circos_with_Counts.sh
+use: bash sam2circos_with_lengths.sh
 
 written July 2022 by S. Dean Rider Jr. based on the following:
 https://www.unix.com/unix-for-dummies-questions-and-answers/179555-count-different-characters-one-column.html
