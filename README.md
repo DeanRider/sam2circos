@@ -1,3 +1,4 @@
+#sam2circos
 Each of these scripts will scan a folder to create a list of input sam files 
 It will then use each file in the list it created
 and evaluate field 2 to separate primary mappings.
