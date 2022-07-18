@@ -8,7 +8,8 @@ in the with-lengths version, and in both versions will make
 counts of translocations. In the third version, translocation counts are converted into line thickness options. The starting and ending information 
 and the count or thickness will then be printed out on a per line basis.
 
-Requires a custom karyotype file to be used with Circos.
+Requires a custom karyotype file to be used with Circos. (https://github.com/node/circos/blob/master/data/karyotype/karyotype.human.hg38.txt).
+Circos can be locally installed or used as an online service (https://github.com/vigsterkr/circos or https://usegalaxy.org.au/).
 
 Names of References must match those in the karyotype file, therefore,
 Manual correction is recommended after processing of the sam file.
