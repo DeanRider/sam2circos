@@ -6,7 +6,9 @@ Each primary mapping represents a match.
 awk grep and sed with sort and uniq will determine the length of reads
 in the with-lengths version, and in both versions will make
 counts of translocations. In the third version, translocation counts are converted into line thickness options. The starting and ending information 
-and the count or thickness will then be printed out on a per line basis.
+and the count or thickness will then be printed out on a per line basis. 
+
+NOTE: this script only handles the BEST match BWA finds and ONE secondary mapping position. If a read has parts from more than two locations, some data will not be represented. A new script called paf2circos will be designed to handle all fragments from a read, but will require an input .paf instead of a .sam file.
 
 IMPLEMENTATION:<br>
 use: bash Sam2Circos_with_Counts.sh
