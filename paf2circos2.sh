@@ -23,7 +23,7 @@
 # 
 #######################################################################
 
-# scan directory structure for sam results and store as a list
+# scan directory structure for paf results and store as a list
 find . -name "*.paf" -type file -exec echo '{}' >> CircosPafList.txt \;
 
 #loop through list in the file and parse data for circos
