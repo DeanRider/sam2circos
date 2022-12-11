@@ -17,7 +17,7 @@
 # Best file to use ends with ".newRenamed.tsv".
 # Other files are more for information than graphing
 #
-# use: bash paf2sircos2.sh
+# use: bash paf2circos2.sh
 #
 # written December 10, 2022 by S. Dean Rider Jr. 
 # 
