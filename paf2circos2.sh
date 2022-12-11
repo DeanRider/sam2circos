@@ -54,7 +54,7 @@ awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=
 # need to check if col 1 and 7 are the same and that col 2 is less than col 8
 # if above is true, print col 4,5,6 and col 10,11,12
 
-# awk ' $1 = $7 && $2 <= $8 { print $4,$ 5, $6, $10, $11, $12 ; } '  $parseref.Sorted.cropped.merged.tmp
+# awk ' $1 = $7 && $2 <= $8 { print $4,$5, $6, $10, $11, $12 ; } '  $parseref.Sorted.cropped.merged.tmp
 
 # Seems to work as expected
 # ################
