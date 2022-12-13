@@ -54,7 +54,7 @@ awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=
 # need to check if col 1 and 7 are the same and that col 2 is less than col 8
 # if above is true, print col 4,5,6 and col 10,11,12
 
-# awk ' $1 = $7 && $2 <= $8 { print $4, $5, $6, $10, $11, $12 ; } '  $parseref.Sorted.cropped.merged.tmp
+# awk ' $1 == $7 && $2 <= $8 { print $4, $5, $6, $10, $11, $12 } '  $parseref.Sorted.cropped.merged.tmp
 
 # Seems to work as expected
 # ################
@@ -63,10 +63,10 @@ awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=
 # ################
 # Now to add a sort and count and make thickness
 
-awk ' $1 = $7 && $2 <= $8 { print $4, $5, $6, $10, $11, $12 ; } '  $parseref.Sorted.cropped.merged.tmp | sort | uniq -c | awk ' BEGIN{OFS="\t";}{print $2,$3,$4,$5,$6,$7,"count = " $1}' > $parseref.Circos.newCounts.tsv || true
+awk ' $1 == $7 && $2 <= $8 { print $4, $5, $6, $10, $11, $12 } '  $parseref.Sorted.cropped.merged.tmp | sort | uniq -c | awk ' BEGIN{OFS="\t";}{print $2,$3,$4,$5,$6,$7,"count = " $1}' > $parseref.Circos.newCounts.tsv || true
 
 
-awk ' $1 = $7 && $2 <= $8 { print $4, $5, $6, $10, $11, $12 ; } '  $parseref.Sorted.cropped.merged.tmp | sort | uniq -c | awk '{
+awk ' $1 == $7 && $2 <= $8 { print $4, $5, $6, $10, $11, $12 } '  $parseref.Sorted.cropped.merged.tmp | sort | uniq -c | awk '{
 if($1 >= 10000)
 	thick="16";
 else if($1 >= 1000)
@@ -113,7 +113,7 @@ cat $parseref.Circos.newThickness.tsv | sed 's/chr23/chrX/g; s/chr24/chrY/g; s/H
 # the +1 in $3-$8+1 handles an "open fence post error"
 #######################################################################
 echo $'Read\tStart\tEnd\tLength\tFrom\tTo' > $parseref.MicroHomology.txt
-sort -k 1,1 -k 3,3n $parseref | awk '{print $1, $3, $4, $6, $8, $9}' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=1}}' | awk ' BEGIN{OFS="\t"} $1 = $7 && $2 <= $8 && $8 <= $3 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' >> $parseref.MicroHomology.txt
+sort -k 1,1 -k 3,3n $parseref | awk '{print $1, $3, $4, $6, $8, $9}' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=1}}' | awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 && $8 <= $3 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' >> $parseref.MicroHomology.txt
 
 
 echo -e "\033[1;34m -. .-.   .-. .-.   .-. .-.   .-. .-.   .-. .-.   .-. .-.   .\033[0m";
