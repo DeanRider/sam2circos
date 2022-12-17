@@ -115,6 +115,20 @@ cat $parseref.Circos.newThickness.tsv | sed 's/chr23/chrX/g; s/chr24/chrY/g; s/H
 echo $'Read\tStart\tEnd\tLength\tFrom\tTo' > $parseref.MicroHomology.txt
 sort -k 1,1 -k 3,3n $parseref | awk '{print $1, $3, $4, $6, $8, $9}' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=1}}' | awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 && $8 <= $3 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' >> $parseref.MicroHomology.txt
 
+# repeat above but asking for those lines without microhomology (8>3)
+echo $'Read\tStart\tEnd\tLength\tFrom\tTo' > $parseref.NoHomology.txt
+awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 && $8 > $3{ print $7, $8, $3, $3-$8+1, $4, $10 ; } ' $parseref.Sorted.cropped.merged.tmp >> $parseref.NoHomology.txt
+
+# repeat above but asking for all lines with or without microhomology
+echo $'Read\tStart\tEnd\tLength\tFrom\tTo' > $parseref.AnyHomology.txt
+awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' $parseref.Sorted.cropped.merged.tmp >> $parseref.AnyHomology.txt
+
+# calculate percentages of each type within the AnyHomology.txt file
+base=$(basename "$parseref")
+echo $base >> MicroHomologySummary.txt
+echo $'% with Microhomology\t% without microhomology' >> MicroHomologySummary.txt
+awk '(NR > 1) && ($4 >= 1) {count++} END {print count/NR*100, (NR-count)/NR*100 }' $parseref.AnyHomology.txt >> MicroHomologySummary.txt
+echo " " >> MicroHomologySummary.txt
 
 echo -e "\033[1;34m -. .-.   .-. .-.   .-. .-.   .-. .-.   .-. .-.   .-. .-.   .\033[0m";
 echo -e "\033[1;30m ||\|||\ /|||\|||\ /|||\|||\ /|||\|||\ /|||\|||\ /|||\|||\ /|\033[0m";
