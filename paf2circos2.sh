@@ -117,11 +117,11 @@ sort -k 1,1 -k 3,3n $parseref | awk '{print $1, $3, $4, $6, $8, $9}' | awk 'BEGI
 
 # repeat above but asking for those lines without microhomology (8>3)
 echo $'Read\tStart\tEnd\tLength\tFrom\tTo' > $parseref.NoHomology.txt
-awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 && $8 > $3{ print $7, $8, $3, $3-$8+1, $4, $10 ; } ' $parseref.Sorted.cropped.merged.tmp >> $parseref.NoHomology.txt
+sort -k 1,1 -k 3,3n $parseref | awk '{print $1, $3, $4, $6, $8, $9}' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=1}}' | awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 && $8 > $3 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' >> $parseref.NoHomology.txt
 
 # repeat above but asking for all lines with or without microhomology
 echo $'Read\tStart\tEnd\tLength\tFrom\tTo' > $parseref.AnyHomology.txt
-awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' $parseref.Sorted.cropped.merged.tmp >> $parseref.AnyHomology.txt
+sort -k 1,1 -k 3,3n $parseref | awk '{print $1, $3, $4, $6, $8, $9}' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j], line[j+1]; j+=1}}' | awk ' BEGIN{OFS="\t"} $1 == $7 && $2 <= $8 { print $7, $8, $3, $3-$8+1, $4, $10 ; } ' >> $parseref.AnyHomology.txt
 
 # calculate percentages of each type within the AnyHomology.txt file
 base=$(basename "$parseref")
