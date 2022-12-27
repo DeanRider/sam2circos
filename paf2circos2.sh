@@ -97,7 +97,7 @@ rm $parseref.Sorted.cropped.merged.tmp
 # space semicolon space s/NameOfSiteToReplace/ECT/g
 # the final one has no space or semicolon after it
 
-cat $parseref.Circos.newThickness.tsv | sed 's/chr23/chrX/g; s/chr24/chrY/g; s/HyTK_406/HyTK/g ; s/A35_EctopicKpnIHouston/ECT/g ; s/A35_Uncut/ECT/g ; s/B38_EctopicKpnIHouston/ECT/g ; s/B38_Uncut/ECT/g ; s/C12_EctopicKpnIHouston/ECT/g ; s/C12_Uncut/ECT/g ; s/Dean_iPCR/ECT/g ; s/EctopicHindIIIdeltaY6/ECT/g ; s/DeltaY6_ATTCT48/ECT/g ; s/N3_EctopicKpnIHouston/ECT/g ; s/N3_Uncut/ECT/g ; s/CAG102RSUNCUT/ECT/g ; s/CAG102RS1/ECT/g ; s/CAG102RS2/ECT/g ; s/CAG102RS_integrated/ECT/g' > $parseref.Circos.newRenamed.tsv
+cat $parseref.Circos.newThickness.tsv | sed 's/chr23/chrX/g; s/chr24/chrY/g; s/HyTK_406/HyTK/g ; s/GQ6_integrant/ECT/g ; s/GQ1_integrant/ECT/g ; s/HD_integrant/ECT/g ; s/A35_EctopicKpnIHouston/ECT/g ; s/A35_Uncut/ECT/g ; s/B38_EctopicKpnIHouston/ECT/g ; s/B38_Uncut/ECT/g ; s/C12_EctopicKpnIHouston/ECT/g ; s/C12_Uncut/ECT/g ; s/Dean_iPCR/ECT/g ; s/EctopicHindIIIdeltaY6/ECT/g ; s/DeltaY6_ATTCT48/ECT/g ; s/N3_EctopicKpnIHouston/ECT/g ; s/N3_Uncut/ECT/g ; s/CAG102RSUNCUT/ECT/g ; s/CAG102RS1/ECT/g ; s/CAG102RS2/ECT/g ; s/CAG102RS_integrated/ECT/g' > $parseref.Circos.newRenamed.tsv
 
 #
 # ################
